@@ -4,7 +4,7 @@ import CustomErrorHandler from "../../services/CustomErrorHandler";
 import bcrypt from "bcrypt";
 import JwtService from "../../services/JwtService";
 import { REFRESH_SECRET } from "../../config";
-import bcrypt from 'bcrypt';
+
 
 const loginController = {
   async login(req, res, next) {
@@ -28,7 +28,7 @@ const loginController = {
           // compare the password
             const match = await bcrypt.compare(req.body.password, user.password);
             if (!match) {
-                return next(CustomErrorHandler.wrongCredentials());
+                return next(CustomErrorHandler.wrongPassword());
             }
 
       // Toekn
